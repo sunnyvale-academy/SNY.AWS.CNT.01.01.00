@@ -101,7 +101,7 @@ resource "aws_launch_configuration" "ecs_config_launch_config_spot" {
   user_data = <<EOF
 #!/bin/bash
 echo ECS_CLUSTER=${var.cluster_name} >> /etc/ecs/ecs.config
-echo ECS_INSTANCE_ATTRIBUTES={\"purchase-option\":\"spot\"} >> /etc/ecs/ecs.config
+#echo ECS_INSTANCE_ATTRIBUTES={\"purchase-option\":\"spot\"} >> /etc/ecs/ecs.config
 EOF
 
   # We’ll see security groups later
@@ -116,13 +116,10 @@ EOF
   key_name             = var.ssh_key_name
 
   # Allow the EC2 instances to access AWS resources on your behalf, using this instance profile and the permissions defined there
-  iam_instance_profile = aws_iam_instance_profile.ec2_iam_instance_profile.arn
+  #iam_instance_profile = aws_iam_instance_profile.ec2_iam_instance_profile.arn
+  iam_instance_profile = "ecsInstanceRole"
 }
 
-resource "aws_iam_instance_profile" "ec2_iam_instance_profile" {
-  name = "ec2_iam_instance_profile"
-  role = "ecsInstanceRole"
-}
 
 # Allow EC2 instances to receive HTTP/HTTPS/SSH traffic IN and any traffic OUT
 resource "aws_security_group" "sg_for_ec2_instances" {

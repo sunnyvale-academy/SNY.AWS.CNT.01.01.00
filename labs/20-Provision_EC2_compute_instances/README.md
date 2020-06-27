@@ -1,5 +1,6 @@
+# Provision EC2 compute instances
 
-
+Run the following command:
 
 ```console
 $ terraform init && \
@@ -15,4 +16,6 @@ $ terraform init && \
   -target=aws_security_group_rule.allow_https_in \
   -target=aws_security_group_rule.allow_egress_all \
   -auto-approve
+  ...
+  Apply complete! Resources: 28 added, 0 changed, 0 destroyed.
 ```
