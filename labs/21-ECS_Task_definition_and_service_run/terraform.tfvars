@@ -1,2 +1,1 @@
-cluster_name="demo-cluster"
-vpc_name="ecs_vpc"
+vpc_id="vpc-0c065d16e0bd21935"

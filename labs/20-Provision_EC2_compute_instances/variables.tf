@@ -21,6 +21,10 @@ variable "min_spot_instances" {
   description = "The minimum EC2 spot instances to have available within the cluster when the cluster receives less traffic"
 }
 variable "max_spot_instances" {
-  default     = "1"
+  default     = "3"
   description = "The maximum EC2 spot instances that can be launched during period of high traffic"
+}
+variable "desired_capacity" {
+  default     = "3"
+  description = "The number of EC2 spot instances that have to be launched"
 }

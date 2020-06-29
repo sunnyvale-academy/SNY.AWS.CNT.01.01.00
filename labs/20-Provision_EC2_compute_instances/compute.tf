@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "ecs_cluster_spot" {
   health_check_grace_period = 30
   max_size                  = var.max_spot_instances
   min_size                  = var.min_spot_instances
-  desired_capacity          = var.min_spot_instances
+  desired_capacity          = var.desired_capacity
 
   # Use this launch configuration to define “how” the EC2 instances are to be launched
   launch_configuration      = aws_launch_configuration.ecs_config_launch_config_spot.name
