@@ -1,0 +1,14 @@
+[
+    {
+      "name": "friendlyhello",
+      "image": "238764214477.dkr.ecr.eu-west-1.amazonaws.com/friendlyhello:1.0",
+      "cpu": 1,
+      "memory": 128,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 30100
+        }
+      ]
+    }
+  ]

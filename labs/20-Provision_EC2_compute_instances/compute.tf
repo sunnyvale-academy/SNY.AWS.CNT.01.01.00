@@ -174,3 +174,14 @@ resource "aws_security_group_rule" "allow_egress_all" {
   cidr_blocks = [
   "0.0.0.0/0"]
 }
+
+resource "aws_security_group_rule" "allow_30100_in" {
+  protocol  = "tcp"
+  from_port = 0
+  to_port   = 30100
+  cidr_blocks = [
+    "0.0.0.0/0"
+  ]
+  security_group_id = aws_security_group.sg_for_ec2_instances.id
+  type              = "ingress"
+}

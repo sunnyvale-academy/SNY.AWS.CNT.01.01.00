@@ -15,6 +15,7 @@ $ terraform init && \
   -target=aws_security_group_rule.allow_http_in \
   -target=aws_security_group_rule.allow_https_in \
   -target=aws_security_group_rule.allow_egress_all \
+  -target=aws_security_group_rule.allow_30100_in \
   -auto-approve
   ...
   Apply complete! Resources: 28 added, 0 changed, 0 destroyed.
