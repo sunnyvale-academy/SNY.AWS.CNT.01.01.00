@@ -16,7 +16,7 @@ $ terraform init && \
   -target=aws_security_group_rule.allow_https_in \
   -target=aws_security_group_rule.allow_egress_all \
   -target=aws_security_group_rule.allow_30100_in \
-  -auto-approve
+  -target=aws_key_pair.personal \
   ...
   Apply complete! Resources: 28 added, 0 changed, 0 destroyed.
 ```

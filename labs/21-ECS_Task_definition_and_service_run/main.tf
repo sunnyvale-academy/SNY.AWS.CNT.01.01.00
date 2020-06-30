@@ -1,4 +1,4 @@
-resource "aws_ecs_task_definition" "service" {
+resource "aws_ecs_task_definition" "friendly-hello" {
   family                = "friendlyhello-task-def"
   container_definitions = file("task.json")
 
@@ -10,13 +10,11 @@ resource "aws_ecs_task_definition" "service" {
   }
 }
 
-
-
 resource "aws_ecs_service" "service-run" {
   name            = "friendlyhello-service"
   cluster         = "demo-cluster"
-  task_definition = "${aws_ecs_task_definition.service.arn}"
-  desired_count   = 3
+  task_definition = "${aws_ecs_task_definition.friendly-hello.arn}"
+  desired_count   = 2
 
   ordered_placement_strategy {
     type  = "binpack"
@@ -35,6 +33,32 @@ resource "aws_ecs_service" "service-run" {
     expression = "attribute:ecs.availability-zone in [eu-west-1a, eu-west-1b, eu-west-1c]"
   }
 }
+
+resource "aws_ecs_task_definition" "redis" {
+  family                = "redis-task-def"
+  container_definitions = file("redis-task.json")
+
+  
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [eu-west-1a, eu-west-1b, eu-west-1c]"
+  }
+}
+
+resource "aws_ecs_service" "redis-service-run" {
+  name            = "redis-service-run"
+  cluster         = "demo-cluster"
+  task_definition = "${aws_ecs_task_definition.redis.arn}"
+  desired_count   = 1
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [eu-west-1a, eu-west-1b, eu-west-1c]"
+  }
+}
+
+
 
 resource "aws_lb_target_group" "ecs-target-group" {
   name     = "ecs-lb-tg"

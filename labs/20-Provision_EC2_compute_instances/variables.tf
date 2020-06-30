@@ -7,7 +7,7 @@ variable "cluster_name" {
 }
 variable "ssh_key_name" {
   description = "SSH key to use to enter and manage the EC2 instances within the cluster. Optional"
-  default     = ""
+  default     = "my-pub-key"
 }
 variable "instance_type_spot" {
   default = "t2.micro"
@@ -17,11 +17,11 @@ variable "spot_bid_price" {
   description = "How much you are willing to pay as an hourly rate for an EC2 instance, in USD"
 }
 variable "min_spot_instances" {
-  default     = "1"
+  default     = "3"
   description = "The minimum EC2 spot instances to have available within the cluster when the cluster receives less traffic"
 }
 variable "max_spot_instances" {
-  default     = "3"
+  default     = "5"
   description = "The maximum EC2 spot instances that can be launched during period of high traffic"
 }
 variable "desired_capacity" {

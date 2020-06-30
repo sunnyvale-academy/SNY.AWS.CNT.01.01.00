@@ -19,7 +19,7 @@ Once ready, create the S3 bucket on AWS.
 
 ```console
 $ terraform init && \
-  terraform apply -target=aws_s3_bucket.terraform_state -auto-approve
+  terraform apply -target=aws_s3_bucket.terraform_state 
 ...
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
@@ -42,7 +42,7 @@ Once ready, create the ECS cluster on AWS.
 
 ```console
 $ terraform init && \
-  terraform apply -target=aws_ecs_cluster.ecs-cluster -auto-approve
+  terraform apply -target=aws_ecs_cluster.ecs-cluster 
 ...
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
